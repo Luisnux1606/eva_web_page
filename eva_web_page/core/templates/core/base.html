@@ -26,7 +26,6 @@
 </head>
 
 <body>
-
     <div class="logo-box">
         <a href="index.html">
 		<img src="{% block background %}{% endblock %}" alt="logo" height="64">
@@ -175,10 +174,21 @@
             <div class="container">
                 <p class="copyright">©2020. Themeswale - All Rights Reserved.</p>
                 <ul class="socials right-socials">
-                    <li><a href="http://facebook.com"><i class="mdi mdi-facebook"></i></a></li>
-                    <li><a href="http://twitter.com"><i class="mdi mdi-twitter"></i></a></li>
-                    <li><a href="http://instagram.com"><i class="mdi mdi-instagram"></i></a></li>
-                    <li><a href="http://pinterest.com"><i class="mdi mdi-pinterest"></i></a></li>
+		{% if LINK_FACEBOOK %} 
+		   <li><a href="{{LINK_FACEBOOK}}"><i class="mdi mdi-facebook"></i></a></li>
+		{% endif %}
+		{% if LINK_TWITTER %} 
+		   <li><a href="{{LINK_TWITTER}}"><i class="mdi mdi-twitter"></i></a></li>
+		{% endif %}
+
+                {% if LINK_INSTAGRAM %} 
+		   <li><a href="{{LINK_INSTAGRAM}}"><i class="mdi mdi-twitter"></i></a></li>
+		{% endif %}
+
+		 {% if LINK_PINTEREST %} 
+		 <li><a href="{{LINK_PINTEREST}}"><i class="mdi mdi-pinterest"></i></a></li>
+		 {% endif %}
+
                 </ul>
             </div>
         </div>

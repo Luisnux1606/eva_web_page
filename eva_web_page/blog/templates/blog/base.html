@@ -101,10 +101,20 @@
                             <div class="widget-title">Subscribe & Follow</div>
 
                             <ul class="socials">
-                                <li><a href="http://facebook.com"><i class="mdi mdi-facebook"></i></a></li>
-                                <li><a href="http://twitter.com"><i class="mdi mdi-twitter"></i></a></li>
-                                <li><a href="http://instagram.com"><i class="mdi mdi-instagram"></i></a></li>
-                                <li><a href="http://pinterest.com"><i class="mdi mdi-pinterest"></i></a></li>
+                                {% if LINK_FACEBOOK %} 
+		   			<li><a href="{{LINK_FACEBOOK}}"><i class="mdi mdi-facebook"></i></a></li>
+				{% endif %}
+				{% if LINK_TWITTER %} 
+		   			<li><a href="{{LINK_TWITTER}}"><i class="mdi mdi-twitter"></i></a></li>
+				{% endif %}
+
+                		{% if LINK_INSTAGRAM %} 
+				   <li><a href="{{LINK_INSTAGRAM}}"><i class="mdi mdi-twitter"></i></a></li>
+				{% endif %}
+
+				 {% if LINK_PINTEREST %} 
+					 <li><a href="{{LINK_PINTEREST}}"><i class="mdi mdi-pinterest"></i></a></li>
+				 {% endif %}
                             </ul>
                         </aside>
 
