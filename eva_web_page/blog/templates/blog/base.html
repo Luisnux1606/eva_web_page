@@ -57,31 +57,10 @@
                 <div class="col-lg-8">
 
                     <!-- Post-->
-		   {% for post in posts %}
-                    <article class="post">
-                        <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">
-				    {%for category in post.categories.all%}
-               			        {{category.name}}{%if not forloop.last%},{%endif%}
-                   		    {%endfor%}
-			   </a>
-			    <h2 class="post-title"><a href="standard-post.html" title="">{{post.title}}</a></h2>
-			    <a href="standard-post.html" title="" class="post-date">{{post.published|date:"SHORT_DATE_FORMAT"}}</a>
-                        </div>
+		    {% block content_post %}
 
-                        <div class="post-preview">
-				<img src="{{post.image.url}}" alt="" class="img-fluid rounded">
-                        </div>
-
-                        <div class="post-content">
-				<p>{{post.content|linebreaks}}</p>
-                        </div>
-
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
-
-                    </article>
-		    {%endfor%}
-                    <!-- Post end-->
+		    {% endblock %}
+		   <!-- Post end-->
 
                      <!-- Pagination-->
                     <div class="row">
@@ -133,10 +112,11 @@
                         <aside class="widget widget_categories">
                             <div class="widget-title">Categories</div>
                             <ul>
-                                <li><a href="#">Journey</a> <span class="float-right">(40)</span></li>
-                                <li><a href="#">Photography</a> <span class="float-right">(11)</span></li>
-                                <li><a href="#">Lifestyle</a> <span class="float-right">(09)</span></li>
-                                <li><a href="#">Food & Drinks</a> <span class="float-right">(28)</span></li>
+				    {% for category in categories.all %}				 
+				    <li><a href="{% url 'category' category.id %}">{{category.name}}</a> <span class="float-right">{{category.get_posts.all.count}}</span></li>
+				    {% endfor %}
+			            <li><a href="{% url 'blog' %}">all</a> <span class="float-right">{{posts.all.count}}</span></li>
+
                             </ul>
                         </aside>
 

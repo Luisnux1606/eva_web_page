@@ -3,7 +3,7 @@ from . import views as blog_views
 
 urlpatterns = [
 
-    path('',blog_views.blog, name="blog"),
+    path('',blog_views.posts, name="blog"),
     path('category/<int:category_id>/',blog_views.category, name="category"),
 ]
 
