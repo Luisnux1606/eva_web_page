@@ -57,111 +57,33 @@
                 <div class="col-lg-8">
 
                     <!-- Post-->
+		   {% for post in category %}
                     <article class="post">
                         <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">Lifestyle</a>
-                            <h2 class="post-title"><a href="standard-post.html" title="">Runaway A Road Adventure</a></h2>
-                            <a href="standard-post.html" title="" class="post-date">Augus 12, 2017</a>
+                            <a class="badge badge-custom" href="#" title="">
+				    {%for category in post.categories.all%}
+               			        {{category.name}}{%if not forloop.last%},{%endif%}
+                   		    {%endfor%}
+			   </a>
+			    <h2 class="post-title"><a href="standard-post.html" title="">{{post.title}}</a></h2>
+			    <a href="standard-post.html" title="" class="post-date">{{post.published|date:"SHORT_DATE_FORMAT"}}</a>
                         </div>
 
                         <div class="post-preview">
-				<img src="{% static 'core/images/blog/blog-1.jpg' %}" alt="" class="img-fluid rounded">
+				<img src="{{post.image.url}}" alt="" class="img-fluid rounded">
                         </div>
 
                         <div class="post-content">
-                            <p>Whether an identity or campaign, we make your brand visible, relevant and effective by placing the digital at the center of its ecosystem, without underestimating the power of traditional media. Whether an identity or campaign, we make your brand visible.</p>
+				<p>{{post.content|linebreaks}}</p>
                         </div>
 
                         <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
 
                     </article>
+		    {%endfor%}
                     <!-- Post end-->
 
-                    <!-- Post-->
-                    <article class="post">
-                        <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">Lifestyle</a>
-                            <h2 class="post-title"><a href="standard-post.html" title="">The planet doesn’t need saving. We do.</a></h2>
-                            <a href="standard-post.html" title="" class="post-date">August 08, 2017</a>
-                        </div>
-
-                        <div class="post-preview">
-                            <img src="{% static 'core/images/blog/blog-2.jpg' %}" alt="" class="img-fluid rounded">
-                        </div>
-
-                        <div class="post-content">
-                            <p>Whether an identity or campaign, we make your brand visible, relevant and effective by placing the digital at the center of its ecosystem, without underestimating the power of traditional media. Whether an identity or campaign, we make your brand visible.</p>
-                        </div>
-
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
-
-                    </article>
-                    <!-- Post end-->
-
-                    <!-- Post-->
-                    <article class="post">
-                        <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">Lifestyle</a>
-                            <h2 class="post-title"><a href="standard-post.html" title="">Modern City With Amazing Dark Blue Sea</a></h2>
-                            <a href="standard-post.html" title="" class="post-date">August 03, 2017</a>
-                        </div>
-
-                        <div class="post-preview">
-                            <img src="{% static 'core/images/blog/blog-3.jpg' %}" alt="" class="img-fluid rounded">
-                        </div>
-
-                        <div class="post-content">
-                            <p>Whether an identity or campaign, we make your brand visible, relevant and effective by placing the digital at the center of its ecosystem, without underestimating the power of traditional media. Whether an identity or campaign, we make your brand visible.</p>
-                        </div>
-
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
-
-                    </article>
-                    <!-- Post end-->
-
-                    <!-- Post-->
-                    <article class="post">
-                        <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">Lifestyle</a>
-                            <h2 class="post-title"><a href="standard-post.html" title="">I told the story of my adventures, and had explained to him</a></h2>
-                            <a href="standard-post.html" title="" class="post-date">August 01, 2017</a>
-                        </div>
-
-                        <div class="post-preview">
-                            <img src="{% static 'core/images/blog/blog-4.jpg' %}" alt="" class="img-fluid rounded">
-                        </div>
-
-                        <div class="post-content">
-                            <p>Whether an identity or campaign, we make your brand visible, relevant and effective by placing the digital at the center of its ecosystem, without underestimating the power of traditional media. Whether an identity or campaign, we make your brand visible.</p>
-                        </div>
-
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
-
-                    </article>
-                    <!-- Post end-->
-
-                    <!-- Post-->
-                    <article class="post">
-                        <div class="text-center post-header">
-                            <a class="badge badge-custom" href="#" title="">Lifestyle</a>
-                            <h2 class="post-title"><a href="standard-post.html" title="">15 Best Healthy and Easy Salad Recipes</a></h2>
-                            <a href="standard-post.html" title="" class="post-date">July 22, 2017</a>
-                        </div>
-
-                        <div class="post-preview">
-                            <img src="{% static 'core/images/blog/blog-5.jpg' %}" alt="" class="img-fluid rounded">
-                        </div>
-
-                        <div class="post-content">
-                            <p>Whether an identity or campaign, we make your brand visible, relevant and effective by placing the digital at the center of its ecosystem, without underestimating the power of traditional media. Whether an identity or campaign, we make your brand visible.</p>
-                        </div>
-
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
-
-                    </article>
-                    <!-- Post end-->
-
-                    <!-- Pagination-->
+                     <!-- Pagination-->
                     <div class="row">
                         <div class="col-sm-12">
                             <ul class="pagination mt-3">

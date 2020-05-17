@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block content%}
+<br>
+	{% for service in services %}
+	      <!-- Proyecto -->
+	      <div class="row project">
+	      	<div class="col-lg-3 col-md-4 offset-lg-1">
+			      <img class="img-fluid" src="{{service.image.url}}" alt="">
+	      	</div>
+	        <div class="col-lg-7 col-md-8">
+	      		<h2 class="section-heading title">{{service.title}}</h2>
+	          <p>{{service.contenido}}</p>
+	      	</div>
+	      </div>
+	      <br>
+	{%endfor%}
+{% endblock %}
+
+
