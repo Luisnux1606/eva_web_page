@@ -168,6 +168,18 @@
             </ul>
         </div>
         <!-- end instagram -->
+	  <div class="container">
+		  <p class="text-center">
+  		  {% load pages_extras %}
+	        {% get_page_list as page_list %}
+        	 {% for page in page_list %}
+        	       <a href="{% url 'page' page.id page.title|slugify %}" class="link">{{page.title}}</a>{% if not forloop.last %}·{% endif %}
+   	         {% endfor %}
+	    <br>
+</p>
+
+	    </div>
+	<div>
 
         <!-- copy-wrapper -->
         <div class="copy-wrapper">
@@ -191,8 +203,9 @@
 
                 </ul>
             </div>
-        </div>
+	    	          </div>
         <!-- end copy-wrapper -->
+
     </footer>
 
     <!-- js placed at the end of the document so the pages load faster -->
