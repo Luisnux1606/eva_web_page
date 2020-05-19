@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'about.apps.AboutMeConfig',
     'blog',
     'ckeditor',
+    'contact',
     'core',
     'pages.apps.PageConfig',
     'portfolio.apps.PortfolioConfig',
@@ -144,3 +146,11 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+#EMAIL CONFIG
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'luisenriquegonzalezd@gmail.com'
+EMAIL_HOST_PASSWORD = 'Dragones1606'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

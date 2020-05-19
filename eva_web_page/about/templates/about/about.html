@@ -18,9 +18,9 @@
                     <!-- Post-->
                     <article class="post">
 
-                        <h5 class="text-center mt-0 mb-5 pb-3 text-uppercase"><b>About Me</b></h5>
+			    <h5 class="text-center mt-0 mb-5 pb-3 text-uppercase"><b>{{about_me|first}}</b></h5>
                         <div class="post-preview">
-				<img src="{% static 'core/images/blog/blog-1.jpg' %}" alt="" class="img-fluid rounded">
+				<img src="{{about_me|second .url}}kj" alt="" class="img-fluid rounded">
                         </div>
 
                         <div class="blog-detail-description">
