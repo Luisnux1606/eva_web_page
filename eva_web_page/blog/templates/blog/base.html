@@ -1,49 +1,24 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% block title %}PORTADA{% endblock %}
-
-{% block background%}{% load static%}{% static 'core/images/logo.png' %}{% endblock %}
-
-		
-{% block headers %}
-	<h1> Eva</h1>
-{% endblock %}
 
 {% block content%}
 <section>
         <div class="main-slider basic-slider">
-            <div class="main-slide">
-		    <img src="{% static 'core/images/slider/slide1.jpg' %}" alt="" />
+            <!-- Slide -->
+	{% for slide in slides.all %}
+          <div class="main-slide">
+				<img src="{{slide.image.url}}" width="200" height="600" alt="" />
                 <div class="slide-title">
-                    <a class="cat-text" href="#" title="">Adventures</a>
-                    <h2><a href="standard-post.html" title="">Beautiful Day With Friends In Paris</a></h2>
+			<a class="cat-text" href="#" title="">{{slide.title}}</a>
+			<h2><a href="standard-post.html" title="">{{slide.subtitle}}</a></h2>
                     <ul class="meta">
-                        <li><a href="standard-post.html" title="">February 22, 2017</a></li>
+			    <li><a href="standard-post.html" title="">{{slide.fecha}}</a></li>
                     </ul>
                 </div>
-            </div>
-            <!-- Slide -->
-            <div class="main-slide">
-                <img src="{% static 'core/images/slider/slide2.jpg' %}" alt="" />
-                <div class="slide-title">
-                    <a class="cat-text" href="#" title="">Lifestyle</a>
-                    <h2><a href="standard-post.html" title="">15 Best Healthy and Easy Salad Recipes</a></h2>
-                    <ul class="meta">
-                        <li><a href="standard-post.html" title="">March 12, 2017</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Slide -->
-            <div class="main-slide">
-                <img src="{% static 'core/images/slider/slide3.jpg' %}" alt="" />
-                <div class="slide-title">
-                    <a class="cat-text" href="#" title="">Love</a>
-                    <h2><a href="standard-post.html" title="">Easy Homemade Candy Recipes and Ideas</a></h2>
-                    <ul class="meta">
-                        <li><a href="standard-post.html" title="">Jun 18, 2017</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Slide -->
+	  </div>
+	{% endfor %}
+
         </div>
         <!-- Slider -->
     </section>

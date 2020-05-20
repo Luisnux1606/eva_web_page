@@ -28,8 +28,7 @@
 <body>
     <div class="logo-box">
         <a href="index.html">
-		<img src="{% block background %}{% endblock %}" alt="logo" height="64">
-		{% block headers %}{% endblock %}
+		<img src="{% static 'core/images/logo_eva.png' %}" alt="logo" height="64">
         </a>
     </div>
 
@@ -44,6 +43,7 @@
                 <div class="menu-item">
                     <!-- Mobile menu toggle-->
                     <a class="navbar-toggle">
+			    
                         <div class="lines">
                             <span></span>
                             <span></span>

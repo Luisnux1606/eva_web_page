@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'contact',
     'core',
+    'slide',
     'pages.apps.PageConfig',
     'portfolio.apps.PortfolioConfig',
     'services.apps.ServicesConfig',
