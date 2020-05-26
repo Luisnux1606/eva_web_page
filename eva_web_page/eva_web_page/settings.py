@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'about.apps.AboutMeConfig',
+    'footer.apps.FooterConfig',
     'blog',
     'ckeditor',
     'contact',
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social.processors.ctx_dict',
                 'blog.processors.ctx_dict',
+                'footer.processors.ctx_dict',
 
             ],
         },

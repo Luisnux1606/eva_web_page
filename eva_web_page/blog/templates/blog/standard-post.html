@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content_post%}
+
+                    <article class="post">
+                        <div class="text-center post-header">
+				    {%for category in pos.categories.all%}
+				    <a href="{% url 'category' category.id %}" class = "badge badge-custom">{{category.name}}</a>{%if not forloop.last%},{%endif%}
+                   		    {%endfor%}
+				<a href="{% url 'blog' %}" class = "badge badge-custom">all</a>
+
+			    <h2 class="post-title"><a href="" title="">{{post.title|capfirst}}</a></h2>
+			    <a href="" title="" class="post-date">{{post.published|date:"SHORT_DATE_FORMAT"}}</a>
+                        </div>
+
+                        <div class="post-preview">
+				<img src="{{post.image.url}}" alt="" class="img-fluid rounded">
+                        </div>
+
+                        <div class="post-content">
+				<p>{{post.content|linebreaks}}</p>
+                        </div>
+
+			<div class="text-center"><a href="{% url 'blog' %}" class="btn btn-outline-custom">Atras<i class="mdi mdi-arrow-left"></i></a></div>
+
+                    </article>
+    {% endblock %}

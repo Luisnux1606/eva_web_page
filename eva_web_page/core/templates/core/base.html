@@ -99,20 +99,26 @@
                     </li>
    -->
                     <li>
-			    <a href="{% url 'service' %}">Service</a>
+			    <a href="{% url 'service' %}">Servivios</a>
                     </li>
-                    <li>
-			    <a href="{% url 'about' %}">About</a>
-                    </li>
-                    <li>
-			    <a href="{%url 'contact'%}">Contact</a>
-                    </li>
-	            <li>
-			    <a href="{%url 'portfolio'%}">Portfolio</a>
+
+		     <li>
+			    <a href="{%url 'portfolio'%}">Proyectos</a>
                     </li>
 
                     <li>
-                        <a href="javascript:void(0);" class="toggle-search" data-target="#search-wrap"><i class="mdi mdi-magnify noti-icon"></i></a>
+			    <a href="{% url 'about' %}">Acerca de</a>
+                    </li>
+
+                    <li>
+			    <a href="{%url 'contact'%}">Contactos</a>
+                    </li>
+	            
+                    <li>
+                        <a href="javascript:void(0);" class="toggle-search" data-target="#search-wrap">
+				<i class="mdi mdi-magnify noti-icon">
+				</i>
+			</a>
                     </li>
                 </ul>
                 <!-- End navigation menu-->
@@ -127,8 +133,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="search-bar">
-                        <form>
-                            <input class="search-input" type="search" placeholder="Search" />
+			    <form name="form_post" method="POST" action="{% url 'search_post' %}">
+				{% csrf_token %}
+                            <input class="search-input" type="search" placeholder="Search" name="search_post" />
+
                         </form>
                         <a href="javascript:void(0);" class="close-search toggle-search" data-target="#search-wrap">
                             <i class="mdi mdi-close-circle"></i>
@@ -148,39 +156,15 @@
         <!-- instagram -->
         <div class="instagram-footer">
             <ul class="instagram-footer">
+		    {% for footer in footer  %}
                 <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/1.jpg' %}" alt=""> </a>
+			<img src="{{footer.image.url}}" alt=""> </a>
                 </li>
-                <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/2.jpg' %}" alt=""> </a>
-                </li>
-                <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/3.jpg' %}" alt=""> </a>
-                </li>
-                <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/4.jpg' %}" alt=""> </a>
-                </li>
-                <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/5.jpg' %}" alt=""> </a>
-                </li>
-                <li>
-                    <a href="#"><img src="{% static 'core/images/instagram/6.jpg' %}" alt=""> </a>
-                </li>
-            </ul>
+		{%endfor%}
+             </ul>
         </div>
         <!-- end instagram -->
-	  <div class="container">
-		  <p class="text-center">
-  		  {% load pages_extras %}
-	        {% get_page_list as page_list %}
-        	 {% for page in page_list %}
-        	       <a href="{% url 'page' page.id page.title|slugify %}" class="link">{{page.title}}</a>{% if not forloop.last %}·{% endif %}
-   	         {% endfor %}
-	    <br>
-</p>
-
-	    </div>
-	<div>
+	  	<div>
 
         <!-- copy-wrapper -->
         <div class="copy-wrapper">
@@ -206,6 +190,17 @@
             </div>
 	    	          </div>
         <!-- end copy-wrapper -->
+<div class="container">
+	    <p class="text-center">
+  	        {% load pages_extras %}
+	        {% get_page_list as page_list %}
+        	{% for page in page_list %}
+        	       <a href="{% url 'page' page.id page.title|slugify %}" class="link">{{page.title}}</a>{% if not forloop.last %}·{% endif %}
+   	        {% endfor %}
+	    <br>
+	    </p>
+
+	  </div>
 
     </footer>
 

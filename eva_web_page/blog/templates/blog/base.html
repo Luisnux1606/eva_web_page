@@ -39,17 +39,28 @@
 
                      <!-- Pagination-->
                     <div class="row">
-                        <div class="col-sm-12">
-                            <ul class="pagination mt-3">
-                                <li class="next"><a href="#"><i class="mdi mdi-chevron-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li class="prev"><a href="#"><i class="mdi mdi-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+{% if posts.has_other_pages %}
+      <ul class="pagination">
+    {% if posts.has_previous %}
+        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+	    {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in posts.paginator.page_range %}
+        {% if posts.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+             <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+         <li><a href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li class="disabled"><span>&raquo;</span></li>
+   {% endif %}
+  </ul>
+ {% endif %}
+
                     </div>
                     <!-- Pagination end-->
                 </div>
@@ -60,20 +71,20 @@
                     <div class="sidebar">
                         <!-- About widget-->
                         <aside class="widget">
-                            <div class="widget-title">About Me</div>
+				<div class="widget-title">{{about_me.title}}</div>
 
                             <div class="about-widget">
-                                <img src="{% static 'core/images/photo.jpg' %}" alt="About Me" class="rounded-circle">
+				    <img src="{{about_me.image.url}}" alt="Acerca de mi " class="rounded-circle">
 
-                                <p>Quis vero phasellus hac nullam, in quam vitae duis adipiscing mauris leo, laoreet eget at quis, ante vestibulum vivamus vel. Sapien lobortis, eget orci purus amet pede, consectetur neque risus ku.</p>
+				    <p>{{about_me.content|safe}}</p>
 
-                                <a href="#" class="btn-read-more mt-2">Read More <i class="mdi mdi-arrow-right"></i></a>
+				    <a href="{% url 'about' %}" class="btn-read-more mt-2">Read More <i class="mdi mdi-arrow-right"></i></a>
                             </div>
                         </aside>
 
                         <!-- Social widget-->
                         <aside class="widget">
-                            <div class="widget-title">Subscribe & Follow</div>
+                            <div class="widget-title">Sigueme</div>
 
                             <ul class="socials">
                                 {% if LINK_FACEBOOK %} 
@@ -95,12 +106,12 @@
 
                         <!-- Categories widget-->
                         <aside class="widget widget_categories">
-                            <div class="widget-title">Categories</div>
+                            <div class="widget-title">Categorias</div>
                             <ul>
 				    {% for category in categories.all %}				 
-				    <li><a href="{% url 'category' category.id %}">{{category.name}}</a> <span class="float-right">{{category.get_posts.all.count}}</span></li>
+				    <li><a href="{% url 'category' category.id %}">{{category.name|capfirst}}</a> <span class="float-right">{{category.get_posts.all.count}}</span></li>
 				    {% endfor %}
-			            <li><a href="{% url 'blog' %}">all</a> <span class="float-right">{{posts.all.count}}</span></li>
+			            <li><a href="{% url 'blog' %}">Todas</a> <span class="float-right">{{posts.all.count}}</span></li>
 
                             </ul>
                         </aside>
