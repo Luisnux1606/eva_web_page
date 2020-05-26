@@ -71,18 +71,32 @@
                     <div class="sidebar">
                         <!-- About widget-->
                         <aside class="widget">
+
 				<div class="widget-title">{{about_me.title}}</div>
 
                             <div class="about-widget">
 				    <img src="{{about_me.image.url}}" alt="Acerca de mi " class="rounded-circle">
 
-				    <p>{{about_me.content|safe}}</p>
+				    <p>{{about_me.content|truncatewords:100|safe}}</p>
 
 				    <a href="{% url 'about' %}" class="btn-read-more mt-2">Read More <i class="mdi mdi-arrow-right"></i></a>
                             </div>
                         </aside>
 
-                        <!-- Social widget-->
+                        
+                        <!-- Categories widget-->
+                        <aside class="widget widget_categories">
+                            <div class="widget-title">Categorias</div>
+                            <ul>
+				    {% for category in categories.all %}				 
+				    <li><a href="{% url 'category' category.id %}">{{category.name|capfirst}}</a> <span class="float-right">{{category.get_posts.all.count}}</span></li>
+				    {% endfor %}
+			            <li><a href="{% url 'blog' %}">Todas</a> <span class="float-right">{{posts.all.count}}</span></li>
+
+                            </ul>
+                        </aside>
+
+                       <!-- Social widget-->
                         <aside class="widget">
                             <div class="widget-title">Sigueme</div>
 
@@ -104,19 +118,6 @@
                             </ul>
                         </aside>
 
-                        <!-- Categories widget-->
-                        <aside class="widget widget_categories">
-                            <div class="widget-title">Categorias</div>
-                            <ul>
-				    {% for category in categories.all %}				 
-				    <li><a href="{% url 'category' category.id %}">{{category.name|capfirst}}</a> <span class="float-right">{{category.get_posts.all.count}}</span></li>
-				    {% endfor %}
-			            <li><a href="{% url 'blog' %}">Todas</a> <span class="float-right">{{posts.all.count}}</span></li>
-
-                            </ul>
-                        </aside>
-
-                       
 		       	<!-- Recent entries widget
                         <aside class="widget widget_recent_entries_custom">
                             <div class="widget-title">Popular Posts</div>

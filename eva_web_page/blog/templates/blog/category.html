@@ -18,10 +18,10 @@
                         </div>
 
                         <div class="post-content">
-				<p>{{post.content|linebreaks}}</p>
+				<p>{{post.content|truncatewords:100|linebreaks}}</p>
                         </div>
 
-                        <div class="text-center"><a href="standard-post.html" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
+                        <div class="text-center"><a href="{% url 'post' post.id %}" class="btn btn-outline-custom">Continue Reading <i class="mdi mdi-arrow-right"></i></a></div>
 
                     </article>
     {%endfor%}

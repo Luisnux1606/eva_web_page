@@ -1,11 +1,14 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 import sys
 from django.urls import reverse
 from .forms import ContactForms
+from .models import Contact
+
 from django.core.mail import EmailMessage,send_mail
 # Create your views here.
 def contact(request):
     #print("Tipo de peticion: {}".format(request.method))
+    contacto = get_object_or_404(Contact,id=1) 
     contact_form = ContactForms()  #create the form in base of form
 
     if request.method == "POST":    #if the request is post
@@ -25,5 +28,5 @@ def contact(request):
             except:
                 return redirect(reverse('contact')+"?fail")
 
-    return render(request,"contact/contact.html",{'form':contact_form})
+    return render(request,"contact/contact.html",{'form':contact_form,'contacto':contacto})
 

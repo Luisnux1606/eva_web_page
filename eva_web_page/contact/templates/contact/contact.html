@@ -10,9 +10,7 @@
 
                     <!-- Post-->
                     <article class="post">
-                        <h5 class="text-center mt-0 mb-5 pb-3 text-uppercase"><b>Get In Touch</b></h5>
-
-                        <p class="text-center">Duis mollis eget augue et lobortis. Nam nunc justo, aliquet sed condimentum vel, faucibus in dolor. Proin eleifend hendrerit rhoncus.</p>
+			<p class="text-center">{{contacto.contenido|safe}}</p>
                        	<form action="" method="POST">
 			{%csrf_token%}
 
