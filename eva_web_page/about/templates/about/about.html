@@ -21,7 +21,7 @@
                             <p>
 			    {{about_me.content|safe}} 
 			    {% if user.is_authenticated %}
-			        <p><a href="{% url 'admin:about_aboutme_change' about_me.id %}">Editar</a></p>
+			        <p><a href="{% url 'admin:about_aboutme_change' about_me.id %}">Editar.</a></p>
 			     {%endif%}
 
 			    </p>
